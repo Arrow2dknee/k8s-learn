@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: send-mail
+spec:
+  jobTemplate:
+    spec:
+      completions: 1
+      template:
+        spec:
+          containers:
+            - name: org-report
+              image: send-org-report
+          restartPolicy: Never
+  schedule: "0 0 * * *"

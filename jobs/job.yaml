@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: throw-dice-challenge
+spec:
+  completions: 3
+  parallelism: 3
+  template:
+    metadata:
+      labels:
+        app: frontend-app
+    spec:
+      containers:
+        - name: throw-dice
+          image: throw-dice-challenge
+      restartPolicy: Never
